@@ -1,0 +1,54 @@
+<h1>Create >1000 USD Transaction</h1>
+<ul class="links-list">
+  <li><%= link_to "Create 0-100 USD Transaction", new_transaction_path(type: 'small') %></li>
+  <li><%= link_to "Create 100-1000 USD Transaction", new_transaction_path(type: 'large') %></li>
+</ul>
+
+<%= form_with model: @transaction do |form| %>
+  <%= form.hidden_field :manager_id, value: @manager.id %>
+  <%= hidden_field_tag :type, 'extra' %>
+  <div class="form-group">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, autocomplete: 'off' %>
+    <% @transaction.errors.full_messages_for(:first_name).each do |message| %>
+      <div class="error"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, autocomplete: 'off' %>
+    <% @transaction.errors.full_messages_for(:last_name).each do |message| %>
+      <div class="error"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :from_amount, 'Amount' %>
+    <%= form.text_field :from_amount, autocomplete: 'off' %>
+    <% @transaction.errors.full_messages_for(:from_amount).each do |message| %>
+      <div class="error"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :from_currency %>
+    <%= form.select :from_currency, Transaction::AVAILABLE_CURRENCIES %>
+    <% @transaction.errors.full_messages_for(:from_currency).each do |message| %>
+      <div class="error"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :to_currency %><br>
+    <%= form.select :to_currency, Transaction::AVAILABLE_CURRENCIES %>
+    <% @transaction.errors.full_messages_for(:to_currency).each do |message| %>
+      <div class="error"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+

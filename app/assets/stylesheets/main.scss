@@ -1,0 +1,142 @@
+body {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  padding: 10px 50px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.main-content {
+  width: 800px;
+  margin: 15px auto;
+  background: #f8f8f8;
+  padding: 10px 40px 40px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #c5c5c5;
+}
+
+h1 {
+  margin-bottom: 30px;
+  font-size: 22px;
+}
+
+a {
+  color: #0083c8;
+  &:hover {
+    color: #005c8d;
+  }
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style: none;
+  li {
+    margin-bottom: 7px;
+  }
+}
+
+//Form styles
+
+input, select {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  height: 30px;
+  width: 260px;
+  &:focus {
+      outline: none;
+      border-color: #0266ca;
+  }
+}
+
+button, input[type="submit"], .button {
+  background: #0266ca;
+  color: white;
+  appearance: none;
+  padding: 10px 13px;
+  height: auto;
+  border: none;
+  cursor: pointer;
+  width: 260px;
+  font-size: 15px;
+  &:hover {
+    background: #057ff9;
+  }
+}
+
+.button {
+  text-decoration: none;
+  text-align: center;
+  &:hover {
+    color: white;
+  }
+}
+
+.form-group {
+  margin-bottom: 20px;
+  label {
+    color: #555555;
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+  }
+}
+
+.field_with_errors {
+  input, select {
+    border: 1px solid #f65656;
+  }
+}
+
+.error {
+  color: #f65656;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+//table
+
+table {
+  text-align: left;
+  border-collapse: collapse; 
+  thead tr {
+    border-bottom: 1px solid #ccc;
+    color: #3b3b3b;
+    th {
+      padding-bottom: 5px;
+      padding-left: 15px;
+    }
+  }
+  td {
+    padding: 8px 15px 8px 15px;
+  }
+}
+
+.links-list {
+  display: flex;
+  padding: 0; 
+  li {
+    margin-right: 20px;
+  }
+}
+
+// Header
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+  margin: 0 auto;
+  .button {
+    width: 150px;
+    height: 35px;
+  }
+  .logo {
+    font-family: PT Serif, serif;
+    font-size: 30px;
+  }
+}
