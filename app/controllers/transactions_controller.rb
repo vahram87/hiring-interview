@@ -10,13 +10,14 @@ class TransactionsController < ApplicationController
 
   def new
     @transaction = Transaction.new
-    @manager = Manager.all.sample
 
     render "new_#{params[:type]}"
   end
 
   def create
     @transaction = Transaction.new(transaction_params)
+
+    @transaction.manager = Manager.order('RANDOM()').limit(1).last if @transaction.extra_large?
 
     if @transaction.save
       redirect_to @transaction
@@ -29,7 +30,6 @@ class TransactionsController < ApplicationController
 
   def transaction_params
     params.require(:transaction).permit(
-      :manager_id,
       :first_name,
       :last_name,
       :from_amount,
