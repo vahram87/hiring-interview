@@ -40,4 +40,5 @@
     <li><%= link_to "Create 100-1000 USD Transaction", new_transaction_path(type: 'large') %></li>
     <li><%= link_to "Create >1000 USD Transaction", new_transaction_path(type: 'extra') %></li>
   </ul>
+  <%= paginate @transactions %>
 </div>
