@@ -12,6 +12,7 @@ class Transaction < ApplicationRecord
   validates :to_currency, inclusion: AVAILABLE_CURRENCIES
   validate :currencies_validation
   validate :manager_validation
+  validates :from_amount, numericality: { greater_than_or_equal_to: 100,  less_than_or_equal_to: 999 }, if: :large?
 
   before_create :generate_uid
   before_validation :convert
@@ -21,7 +22,7 @@ class Transaction < ApplicationRecord
   end
 
   def large?
-    from_amount_in_usd > Money.from_amount(100)
+    from_amount_in_usd >= Money.from_amount(100)
   end
 
   def extra_large?
@@ -39,9 +40,7 @@ class Transaction < ApplicationRecord
   end
 
   def convert
-    if self.to_amount.blank?
-      self.to_amount = from_amount.exchange_to(self.to_currency)
-    end
+    self.to_amount = from_amount.exchange_to(self.to_currency)
   end
 
   def currencies_validation
