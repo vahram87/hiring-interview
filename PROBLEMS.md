@@ -7,14 +7,14 @@
 3. ...
 #### Performance issues
 
-1. performance: @manager = Manager.all.sample loads all managers into memory, then selects one from an array randomly, this is inefficient if there are many manager records (edited)
+1. performance: @manager = Manager.all.sample loads all managers into memory, then selects one from an array randomly, this is inefficient if there are many manager records
 this is more efficient: Manager.order('RANDOM()').limit(1).last
 2. ...
 3. ...
 #### Code issues
 
 1.  what if the transaction is not found? will throw an error, better to use find_by_id and show a message if not found
-2. ...
+2.  5 HEX characters produces a maximum of 16 ^ 5 = 1,048,576 variations, which is not enough unique combinations for multiple millions of transactions, should be a value greater than 5, for example 8
 3. ...
 #### Others
 
