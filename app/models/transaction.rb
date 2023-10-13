@@ -35,7 +35,7 @@ class Transaction < ApplicationRecord
   private
 
   def generate_uid
-    self.uid = SecureRandom.hex(5)
+    self.uid = SecureRandom.hex(8)
   end
 
   def convert
