@@ -16,6 +16,7 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = Transaction.new(transaction_params)
+
     @transaction.manager = Manager.order('RANDOM()').limit(1).last if @transaction.extra_large?
 
     if @transaction.save
